@@ -1,8 +1,7 @@
-package NO15;
+package No15;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
