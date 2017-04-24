@@ -28,8 +28,13 @@ public class WordLadder {
                     wordunit[i] = j;
                     String temp = new String(wordunit);
 
-                    if(temp.equals(endWord))
-                        return level+1;
+                    if(temp.equals(endWord)){
+                        if(dict.contains(temp))
+                            return level+1;
+                        else
+                            return 0;
+                    }
+
                     if(dict.contains(temp)){
                         queue.add(temp);
                         nextnum ++ ;
@@ -54,8 +59,8 @@ public class WordLadder {
         LinkedList<String> wordList = new LinkedList<>();
         wordList.add("hot");
         wordList.add("dog");
-        wordList.add("dot");
         wordList.add("lot");
+        wordList.add("log");
         wordList.add("cog");
         System.out.println(new WordLadder().ladderLength(beginEord,endWord,wordList));
     }
