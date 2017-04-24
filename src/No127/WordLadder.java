@@ -6,13 +6,13 @@ import java.util.*;
  * Created by bupt on 4/24/17.
  */
 public class WordLadder {
-    public int ladderLength(String beginWord,String endWord,List<String> wordList){
-
-        if(beginWord == null || endWord == null || beginWord.length() == 0
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        if (beginWord == null || endWord == null || beginWord.length() == 0
                 || endWord.length() == 0 || beginWord.length() != endWord.length())
             return 0;
+
         Set<String> dict = new HashSet<>();
-        for(String s:wordList)
+        for (String s : wordList)
             dict.add(s);
 
         Queue<String> queue = new LinkedList<>();
@@ -22,35 +22,33 @@ public class WordLadder {
         int curnum = 1; // this level word number
         int nextnum = 0; // the number od words added queue
 
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             String word = queue.poll();
-            curnum --;
-
-            for(int i = 0;i < word.length();i++){
+            curnum--;
+            for (int i = 0; i < word.length(); i++) {
                 char[] wordunit = word.toCharArray();
-                for(char j = 'a'; j <= 'z';j++){
+                for (char j = 'a'; j <= 'z'; j++) {
                     wordunit[i] = j;
                     String temp = new String(wordunit);
 
-                    if(temp.equals(endWord)){
-                        if(dict.contains(temp))
-                            return level+1;
+                    if (temp.equals(endWord)) {
+                        if (dict.contains(temp))
+                            return level + 1;
                         else
                             return 0;
                     }
-
-                    if(dict.contains(temp)){
+                    if (dict.contains(temp)) {
                         queue.add(temp);
-                        nextnum ++ ;
+                        nextnum++;
                         dict.remove(temp);
                     }
                 }
             }
 
-            if(curnum == 0){
+            if (curnum == 0) {
                 curnum = nextnum;
                 nextnum = 0;
-                level ++;
+                level++;
             }
         }
 
@@ -66,6 +64,6 @@ public class WordLadder {
         wordList.add("lot");
         wordList.add("log");
         wordList.add("cog");
-        System.out.println(new WordLadder().ladderLength(beginEord,endWord,wordList));
+        System.out.println(new WordLadder().ladderLength(beginEord, endWord, wordList));
     }
 }
