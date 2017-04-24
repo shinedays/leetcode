@@ -7,6 +7,10 @@ import java.util.*;
  */
 public class WordLadder {
     public int ladderLength(String beginWord,String endWord,List<String> wordList){
+
+        if(beginWord == null || endWord == null || beginWord.length() == 0
+                || endWord.length() == 0 || beginWord.length() != endWord.length())
+            return 0;
         Set<String> dict = new HashSet<>();
         for(String s:wordList)
             dict.add(s);
