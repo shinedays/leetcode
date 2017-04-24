@@ -4,30 +4,52 @@ package No28;
  * Created by bupt on 3/30/17.
  */
 public class ImplementstrStr {
-    public int[] strStr(String haystack,String needle){
-
+    public int[] nextArray(String needle){
         int needleLength = needle.length();
-        int[] next = new int[needleLength + 1];
+        int[] next = new int[needleLength];
+        next[0] = -1;
+        int i = 0;
+        int k = -1;
         int j = 0;
-        next[0] = next[1] = 0;
-        for(int i = 0;i<needleLength;i++){
-            while(j > 0 && needle.charAt(i) != needle.charAt(j))
-                j = next[j];
-            if( needle.charAt(i) == needle.charAt(j)){
-                j++;
+        while(j < needleLength - 1){
+            if(k == -1 || needle.charAt(j) == needle.charAt(k)){
+                ++k;
+                ++j;
+                next[j] = k;
             }
-            next[i+1] = j;
+            else{
+                k = next[k];
+            }
         }
-
         return next;
     }
 
-    public static void main(String[] args) {
-        String str = "aaaaaa";
-        int[] res = new ImplementstrStr().strStr(str,str);
-        for(int i : res){
-            System.out.println(i);
+    public int strStr(String haystack,String needle){
+        int[] next = nextArray(needle);
+        int i = 0;
+        int j = 0;
+
+        int haystackLength = haystack.length();
+        int needleLength = needle.length();
+
+        while(i < haystackLength && j < needleLength){
+            if(j == -1 || haystack.charAt(i) == needle.charAt(j)){
+                i++;
+                j++;
+            } else {
+                j = next[j];
+            }
         }
+        if(j == needleLength)
+            return i - j;
+        else
+            return -1;
+    }
+
+    public static void main(String[] args) {
+        String str = "BBC ABACAB ABCDABCDABDE";
+        String needle = "ABCDABD";
+        System.out.println(new ImplementstrStr().strStr(str,needle)) ;
     }
 
 }
