@@ -8,14 +8,16 @@ public class ImplementstrStr {
         int needleLength = needle.length();
         int[] next = new int[needleLength];
         next[0] = -1;
-        int i = 0;
         int k = -1;
         int j = 0;
         while(j < needleLength - 1){
             if(k == -1 || needle.charAt(j) == needle.charAt(k)){
                 ++k;
                 ++j;
-                next[j] = k;
+                if(needle.charAt(j) != needle.charAt(k))
+                    next[j] = k;
+                else
+                    next[j] = next[k];
             }
             else{
                 k = next[k];
