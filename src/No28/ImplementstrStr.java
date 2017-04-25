@@ -27,6 +27,9 @@ public class ImplementstrStr {
     }
 
     public int strStr(String haystack,String needle){
+        if(needle.length() == 0)
+            return 0;
+
         int[] next = nextArray(needle);
         int i = 0;
         int j = 0;
