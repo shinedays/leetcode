@@ -56,19 +56,18 @@ public class Solution {
                 set = thirdLine;
 
             for(int i = 1;i < smallWord.length();i++){
-                char character = word.charAt(i);
+                char character = smallWord.charAt(i);
                 if(!set.contains(character))
                     continue flag;
             }
             list.add(word);
         }
 
-
         return list.toArray(new String[list.size()]);
     }
 
     public static void main(String[] args) {
-        String[] input = {"Hello","Alaska","Dad","Peace"};
+        String[] input = {"zZxcvbnm","Alaska","Dad","Peace"};
         String[] res = findWords(input);
         for(String s:res){
             System.out.println(s);
