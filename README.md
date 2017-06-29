@@ -1,2 +1,2 @@
 # leetcode
-This resposity is used to update some leetcode's codes.Title is quewtion number.
+LeetCode部分题目,使用Java，刷到哪写到哪。。。
